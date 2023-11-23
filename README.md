@@ -10,6 +10,6 @@ Esteban Badilla
 - Ángeles Ulate Jarquín C07908
 
 ## Instrucciones:
-Sentido Derecha-Izquierda -> Programación modo Estrural  
+Sentido Derecha-Izquierda -> Programación modo Estrutural  
 
 Sentido Izquierda-Derecha -> Programación modo Conductual
