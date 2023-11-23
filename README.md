@@ -6,7 +6,7 @@ Esteban Badilla
 
 ## Miembros de grupo 03: 
 - Alejandra Soto Arias B87766
-- Ignacio Soto B67062
+- Ignacio Soto Montero B67062
 - Ángeles Ulate Jarquín C07908
 
 ## Instrucciones:
