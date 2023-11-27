@@ -1,17 +1,24 @@
-module Celda_tipica_i_d (
+module Celda_tipica_d_i #(
     parameter N=3
 
-) (/*Tiene 4 entradas dos salidas*/
+) (
     input wire a_p,
     input wire b_p,
     input wire x_p,
-    input wire y_p,
-    output wire p_x,
-    output wire p_y,
-
+    output wire p_x
 );
+wire notA;
 
-assing p_x = 1'b1;
-assing p_y = y_p&~a_p|y_p&b_p|~a_p&b_p;
+    // Negar A
+    not U1 (a_p, notA);
+
+    //  ~A con B
+    and U2 (notA, b_p, p_x);
+
+    //  x con B
+    and U3 (x_p, b_p, notA);
+
+    // Sumar
+    or U4 (p_x, notA, p_x);
 
 endmodule

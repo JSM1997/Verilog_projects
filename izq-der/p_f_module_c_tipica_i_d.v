@@ -1,4 +1,4 @@
-module Celda_tipica_i_d (
+module Celda_tipica_i_d #(
     parameter N = 3
 )(
     input wire a_p,
@@ -8,16 +8,8 @@ module Celda_tipica_i_d (
     output wire p_x,
     output wire p_y
 );
-    wire notA;
 
-    not U1 (.a(a_p), .b(notA));
-    and U2 (.a(notA), .b(b_p), .out(p_x));
-    and U3 (.a(x_p), .b(b_p), .out(p_y));
-    and U4 (.a(notA), .b(x_p), .out(p_x));
-
-    // Sumar
-    or U5 (.a(p_x), .b(p_y), .out(p_x));
-
-    assign p_y = y_p;
+    assign p_x = x_p && y_p || x_p && ~b_p || x_p && a_p;
+    assign p_y = y_p || x_p && b_p;
 
 endmodule

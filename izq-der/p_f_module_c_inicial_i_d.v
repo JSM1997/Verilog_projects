@@ -1,12 +1,13 @@
-module Celda_inicial_d_i #(
-    parameter N=3/*preguntar al profe si esta es una definición valida porque no se puede pedir */ 
-    
+module Celda_inicial_i_d #(
+    parameter N=3
+
 ) (/*Celda inicial no tiene entradas de estado presente(son evaluadas), tiene entradas primarias, y salidas de proximo estado*/
-    input wire a_p, 
+    input wire a_p,
     input wire b_p,
     output wire p_x,
     output wire p_y
 );
-assing p_x = 
-    
+    assign p_x = b_p;
+    assign p_y = a_p||b_p;
+
 endmodule
