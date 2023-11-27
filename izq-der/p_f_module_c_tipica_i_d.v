@@ -1,15 +1,23 @@
-module Celda_tipica_d_i #(
-    parameter N=3/*preguntar al profe si esta es una definición valida porque no se puede pedir */ 
-    
-) (/*Tiene 4 entradas dos salidas*/
-    input wire a_p, 
+module Celda_tipica_i_d (
+    parameter N = 3
+)(
+    input wire a_p,
     input wire b_p,
-    input wire x_p, 
+    input wire x_p,
     input wire y_p,
     output wire p_x,
     output wire p_y
 );
-assing p_x = 1'b1;
-assing p_y = y_p&~a_p|y_p&b_p|~a_p&b_p;
-    
+    wire notA;
+
+    not U1 (.a(a_p), .b(notA));
+    and U2 (.a(notA), .b(b_p), .out(p_x));
+    and U3 (.a(x_p), .b(b_p), .out(p_y));
+    and U4 (.a(notA), .b(x_p), .out(p_x));
+
+    // Sumar
+    or U5 (.a(p_x), .b(p_y), .out(p_x));
+
+    assign p_y = y_p;
+
 endmodule
