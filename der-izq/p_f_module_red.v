@@ -2,18 +2,18 @@
 `include "p_f_module_c_tipica_d_i.v"
 `include "p_f_module_c_final_d_i.v"
 
-module red_d_i (
-
+module red (
     input [2:0] palabraA,
     input [2:0] palabraB,
-    output reg resultado
+    output wire Z
 );
-    wire c1;
-    wire c2;
-    wire c3;
 
-    Celda_inicial_d_i ci (palabraA, palabraB, 1'b0, c1); //Instanciación en c1 se guarda el resultado de celda inicial
-    Celda_tipica_d_i ct (palabraA, palabraB, 1'b0, c2); //Instanciación en c2 se guarda el resultado de celda tipica
-    Celda_final_d_i cf (palabraA, palabraB, 1'b0, c3);   //Instanciación en c3 se guarda el resultado de celda final
+wire c1;
+wire c2;
+
+Celda_inicial_d_i ci (.a_p(palabraA[0]), .b_p(palabraB[0]), .p_x(c1)); // Instanciación en c1 se guarda el resultado de celda inicial
+Celda_tipica_d_i ct (.a_p(palabraA[1]), .b_p(palabraB[1]), .p_x(c2)); // Instanciación en c2 se guarda el resultado de celda tipica
+Celda_final_d_i cf (.a_p(palabraA[2]), .b_p(palabraB[2]), .p_x(Z)); // Instanciación en c3_temp se guarda el resultado de celda final
+
 
 endmodule
