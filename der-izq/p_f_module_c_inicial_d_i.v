@@ -5,12 +5,13 @@ module Celda_inicial_d_i (
     input wire x_p, //entrada x, representa el estado inicial definido
     output wire p_x // salida, resultado de la logica combinacional del modulo
 );
-wire notA; //conecta la salida de not U1 a la entrada and U2
+
+wire C1; //conecta la salida de not N1 a la entrada and A1
 
     // Negar A
-    not U1 (a_p, notA);
+    not N1 (a_p, C1);
 
     //  ~A por B
-    and U2 (notA, b_p, p_x);
+    and A1 (C1, b_p, p_x);
 
 endmodule
