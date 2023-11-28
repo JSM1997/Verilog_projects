@@ -1,7 +1,6 @@
-module Celda_final_d_i #(
-    parameter N=3
+module Celda_final_d_i (
 
-) (/*Tiene 4 entradas 1 salida*/
+/*Tiene 4 entradas 1 salida*/
     input wire a_p,
     input wire b_p,
     input wire x_p,

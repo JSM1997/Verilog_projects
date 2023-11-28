@@ -1,7 +1,6 @@
-module Celda_inicial_i_d #(
-    parameter N=3
+module Celda_inicial_i_d(
 
-) (/*Celda inicial no tiene entradas de estado presente(son evaluadas), tiene entradas primarias, y salidas de proximo estado*/
+/*Celda inicial no tiene entradas de estado presente(son evaluadas), tiene entradas primarias, y salidas de proximo estado*/
     input wire a_p,
     input wire b_p,
     output wire p_x,

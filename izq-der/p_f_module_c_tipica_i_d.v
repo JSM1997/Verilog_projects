@@ -1,6 +1,5 @@
-module Celda_tipica_i_d #(
-    parameter N = 3
-)(
+module Celda_tipica_i_d (
+
     input wire a_p,
     input wire b_p,
     input wire x_p,
