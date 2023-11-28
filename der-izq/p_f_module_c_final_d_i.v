@@ -1,3 +1,4 @@
+
 module Celda_final_d_i (
 
     input wire a_p, // Entrada A, último bit de la palabra A
