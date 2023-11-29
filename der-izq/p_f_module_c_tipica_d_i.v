@@ -11,25 +11,21 @@ wire c2; //salida de A1
 wire c3; //salida de A2
 wire c4; //salida de A3
 wire c5; //salida de U5
-wire c6; //salida de U6
-
-
-//Ecuacion celda tipica ~A&B | x&B | x&~A
 
     // Negar A
-    not N1 (a_p, c1);
+    not N1 (c1, a_p);
 
     //  ~A con X
-    and A1 (c1, x_p, c2);
+    and A1 (c2, x_p, c1);
 
     //  x con B
-    and U3 (b_p, x_p, c3);
+    and A2 (c3, b_p, x_p);
 
     //  ~A con B
-    and A3 (C1, b_p, c4);
+    and A3 (c4, c1, b_p);
 
     // Sumar
-    or O5 (c2, c3, c5);
-    or O6 (c4, c5, c6);
+    or O5 (c5, c2, c3);
+    or O6 (p_x, c4, c5);
 
 endmodule

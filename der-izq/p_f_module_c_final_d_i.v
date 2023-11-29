@@ -7,30 +7,31 @@ module Celda_final_d_i (
     output wire p_x // Salida, resultado de la lógica combinacional del módulo
 );
 
-    wire c1; // Salida de N1
-    wire c2; // Salida de N2
-    wire c3; // Salida de A1
-    wire c4; // Salida de A2
-    wire c5; // Salida de A3
-    wire c6; // Salida de O1
+wire c1; //salida de N1
+wire c2; //salida de A1
+wire c3; //salida de A2
+wire c4; //salida de A3
+wire c5; //salida de U5
+wire c6;
+wire c7;
 
-    // Negar x
-    not N1 (x_p, c1);
+    // Negar A
+    not N1 (c1, a_p);
 
-    // Negar B
-    not N2 (b_p, c2);
+    //  ~A con X
+    and A1 (c2, x_p, c1);
 
-    // ~x con ~B
-    and A1 (c2, c1, c3);
+    //  x con B
+    and A2 (c3, b_p, x_p);
 
-    // ~x con A
-    and A2 (c2, a_p, c4);
-
-    // ~B con A
-    and A3 (c1, a_p, c5);
+    //  ~A con B
+    and A3 (c4, c1, b_p);
 
     // Sumar
-    or O1 (c3, c4, c6);
-    or O2 (c5, c6, p_x);
+    or O5 (c5, c2, c3);
+    or O6 (c7, c4, c5);
+
+    // negar la salida final
+    not N2 (p_x, c7);
 
 endmodule
