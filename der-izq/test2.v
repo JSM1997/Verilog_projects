@@ -1,40 +1,45 @@
-`include "p_f_module_red.v"
+`include "p_f_module_c_inicial_d_i.v"
+`include "p_f_module_c_tipica_d_i.v"
+`include "p_f_module_c_final_d_i.v"
+`include "tester.v"
 
-module testbench;
+module testbench();
+    input [4:0] A, B;
+    wire proximo_estado[3:0];
+    wire Z;
 
-    // Declaración de los Data Types
+    initial begin
+        $dumpfile("salida.vcd");
+        $dumpvars;
+    end
 
-    // Inputs
-    reg [3:0] K;
-    reg [3:0] L;
-
-    // Outputs
-    wire P;
-
-    // Instanciación de la Unit Under Test (UUT)
-
-    red uut (
-        .palabraA(K), // ENTRADAS
-        .palabraB(L),
-        .Z(P) // SALIDA
+    tester tester_inst (
+        .A(A),
+        .B(B)
     );
 
-    // Aplicación de vectores de prueba.
+    Celda_inicial_d_i CI_inst (
+        .a_p(A[0]),
+        .b_p(B[0]),
+        .p_x(proximo_estado[0])
+    );
 
-    initial begin
-        K = 5;
-        L = 8;
-        #100;
-        K = 12;
-        L = 7;
-        #100;
-        K = 6;
-        L = 6;
-        #100;
-    end
+    genvar i;
+    generate
+        for (i = 0; i < 3; i = i + 1) begin : CT_generate
+            Celda_tipica_d_i CT_inst (
+                .a_p(A[i + 1]),
+                .b_p(B[i + 1]),
+                .x_p(proximo_estado[i]),
+                .p_x(proximo_estado[i + 1])
+            );
+        end
+    endgenerate
 
-    initial begin
-        $monitor("Las Entradas son: K = %d, L = %d, El resultado de la comparación es: P = %d", K, L, P);
-    end
-
+    Celda_final_d_i CF_inst (
+        .a_p(A[4]),
+        .b_p(B[4]),
+        .x_p(proximo_estado[3]),
+        .p_x(Z)
+    );
 endmodule
