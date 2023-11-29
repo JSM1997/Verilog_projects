@@ -1,7 +1,7 @@
 module Celda_final_d_i (
 
-    input wire a_p, // Entrada A, último bit de la palabra A
-    input wire b_p, // Entrada B, último bit de la palabra B
+    input wire a_p, // Entrada A
+    input wire b_p, // Entrada B
     input wire x_p, // Entrada x, representa el estado inicial definido
     output wire p_x // Salida, resultado de la lógica combinacional del módulo
 );
@@ -29,7 +29,7 @@ module Celda_final_d_i (
     or O5 (c5, c2, c3);
     or O6 (c6, c4, c5);
 
-    // negar la salida final
+    // Negar la salida final
     not N2 (p_x, c6);
 
 endmodule
